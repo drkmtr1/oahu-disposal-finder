@@ -43,4 +43,11 @@ test('resident can search a canonical topic, alias, or deterministic clarificati
   await page.getByRole('button', { name: 'Search', exact: true }).click()
   await expect(page.getByRole('heading', { level: 3, name: 'Household Hazardous Waste appointment required' })).toBeVisible()
   await expect(page.getByRole('link', { name: /Open the current City HHW process/ })).toBeVisible()
+
+  await page.getByLabel('Enter a supported item or topic').fill('mystery household item')
+  await page.getByRole('button', { name: 'Search', exact: true }).click()
+  await expect(page.getByRole('heading', { level: 2, name: 'This item is not currently covered by V1' })).toBeVisible()
+  await expect(page.getByText(/does not mean the City has no disposal rule/)).toBeVisible()
+  await expect(page.getByRole('link', { name: 'How to Dispose of Trash' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Browse the 25 supported topics' })).toBeVisible()
 })

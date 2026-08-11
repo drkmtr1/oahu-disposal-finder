@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { DisposalResult } from '../components/DisposalResult'
 import { DataError } from '../components/DataError'
+import { FallbackGuidance } from '../components/FallbackGuidance'
 import { loadDisposalData } from '../data/loadData'
 import { resolveCanonicalTopic } from '../domain/resolveCanonicalTopic'
 import { resolveEligibleFacilities } from '../domain/resolveFacilities'
@@ -33,6 +34,8 @@ function App() {
   const fallbackSources = selectedFallback
     ? data.sources.filter((source) => selectedFallback.source_ids.includes(source.id))
     : []
+  const unsupportedFallback = data.fallbacks.unsupported
+  const unsupportedSources = data.sources.filter((source) => unsupportedFallback.source_ids.includes(source.id))
 
   function selectTopic(itemId: string) {
     setSelectedTopicId(itemId)
@@ -153,29 +156,15 @@ function App() {
         )}
 
         {selectedFallback && (
-          <section className="fallback" aria-labelledby="fallback-title" aria-live="polite">
-            <h2 id="fallback-title">Check the official source</h2>
-            <p>{selectedFallback.message}</p>
-            <ul>
-              {fallbackSources.map((source) => (
-                <li key={source.id}>
-                  <a href={source.url} target="_blank" rel="noreferrer">
-                    {source.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
+          <FallbackGuidance fallback={selectedFallback} sources={fallbackSources} />
         )}
 
         {noMatchQuery !== null && (
-          <section className="no-match" aria-labelledby="no-match-title" aria-live="polite">
-            <h2 id="no-match-title">No exact supported topic found</h2>
-            <p>
-              “{noMatchQuery}” does not match a supported item or topic. We will not guess a
-              disposal result.
-            </p>
-          </section>
+          <FallbackGuidance
+            fallback={unsupportedFallback}
+            sources={unsupportedSources}
+            query={noMatchQuery}
+          />
         )}
       </main>
       <footer className="site-footer">
