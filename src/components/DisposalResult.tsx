@@ -1,3 +1,4 @@
+import type { Ref } from 'react'
 import { hasRequiredResultData, type ResultItem } from '../domain/resultData'
 import { DataError } from './DataError'
 import { FacilityCards } from './FacilityCards'
@@ -22,6 +23,7 @@ type DisposalResultProps = {
     restrictions?: string[]
     source_ids: string[]
   }[]
+  headingRef?: Ref<HTMLHeadingElement>
 }
 
 function InstructionList({ instructions }: { instructions: string[] }) {
@@ -34,15 +36,15 @@ function InstructionList({ instructions }: { instructions: string[] }) {
   )
 }
 
-export function DisposalResult({ item, sources, facilities }: DisposalResultProps) {
+export function DisposalResult({ item, sources, facilities, headingRef }: DisposalResultProps) {
   if (!hasRequiredResultData(item)) {
     return <DataError />
   }
 
   return (
-    <section className="selected-topic" aria-labelledby="selected-topic-title" aria-live="polite">
+    <section className="selected-topic" aria-labelledby="selected-topic-title">
       <p className="eyebrow">Selected topic</p>
-      <h2 id="selected-topic-title">{item.name}</h2>
+      <h2 id="selected-topic-title" ref={headingRef} tabIndex={-1}>{item.name}</h2>
 
       <section aria-labelledby="next-action-title">
         <h3 id="next-action-title">What to do</h3>
