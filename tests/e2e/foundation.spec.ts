@@ -1,5 +1,11 @@
 import { expect, test } from '@playwright/test'
 
+async function expectNoHorizontalOverflow(page: import('@playwright/test').Page) {
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
+    await page.evaluate(() => window.innerWidth),
+  )
+}
+
 test('resident can browse and select every supported canonical topic', async ({ page }) => {
   await page.goto('/')
   await expect(page.getByRole('heading', { level: 1, name: 'Oʻahu Household-Item Disposal Finder' })).toBeVisible()
@@ -50,4 +56,29 @@ test('resident can search a canonical topic, alias, or deterministic clarificati
   await expect(page.getByText(/does not mean the City has no disposal rule/)).toBeVisible()
   await expect(page.getByRole('link', { name: 'How to Dispose of Trash' })).toBeVisible()
   await expect(page.getByRole('link', { name: 'Browse the 25 supported topics' })).toBeVisible()
+})
+
+test('resident can complete the core flow on a narrow phone viewport without horizontal scrolling', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 })
+  await page.goto('/')
+
+  await expect(page.getByRole('button', { name: 'Search', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Propane tank / cylinder' })).toBeVisible()
+  await expectNoHorizontalOverflow(page)
+
+  await page.getByLabel('Enter a supported item or topic').fill('propane tank')
+  await page.getByRole('button', { name: 'Search', exact: true }).click()
+
+  await expect(page.getByRole('heading', { level: 2, name: 'Propane tank / cylinder' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 3, name: 'Restrictions and limits' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 3, name: 'Eligible City locations' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 3, name: 'Sources and verification' })).toBeVisible()
+  await expectNoHorizontalOverflow(page)
+
+  await page.getByLabel('Enter a supported item or topic').fill('battery')
+  await page.getByRole('button', { name: 'Search', exact: true }).click()
+  await expect(page.getByText('Which type of battery do you have?')).toBeVisible()
+  await page.getByRole('button', { name: 'Alkaline household battery' }).click()
+  await expect(page.getByRole('heading', { level: 2, name: 'Alkaline battery' })).toBeVisible()
+  await expectNoHorizontalOverflow(page)
 })
