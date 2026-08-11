@@ -10,7 +10,7 @@ Independent Hawaiʻi civic-tech pilot that helps Oʻahu residents determine the 
 - Phase 4 — Technical Design: complete
 - Phase 5 — Development Foundation: complete
 - Product-story implementation: complete
-- Production deployment: pending GitHub Pages enablement and release-branch merge; see the release handoff below
+- Production deployment: live on GitHub Pages; human visual/screen-reader release sign-off remains pending
 
 ## V1 boundary
 
@@ -95,7 +95,7 @@ See the complete [data limitations](docs/data/DATA_LIMITATIONS.md).
 
 ## Deployment and release handoff
 
-GitHub Actions deploys `main` through the Pages workflow after the full quality suite passes. The expected public URL is:
+GitHub Actions deploys `main` through the Pages workflow after the full quality suite passes. The public URL is:
 
 `https://drkmtr1.github.io/oahu-disposal-finder/`
 
