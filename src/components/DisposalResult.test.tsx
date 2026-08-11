@@ -52,6 +52,32 @@ describe('DisposalResult', () => {
     expect(screen.queryByRole('heading', { level: 3, name: 'What to do' })).not.toBeInTheDocument()
   })
 
+  it('renders a data error when required provenance is missing', () => {
+    render(
+      <DisposalResult
+        item={{ ...lithiumBattery, verified_on: '' }}
+        sources={lithiumSources}
+        facilities={lithiumFacilities}
+      />,
+    )
+
+    expect(screen.getByRole('heading', { level: 2, name: 'Guidance unavailable' })).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { level: 3, name: 'Sources and verification' })).not.toBeInTheDocument()
+  })
+
+  it('renders a data error when a declared source cannot be resolved', () => {
+    render(
+      <DisposalResult
+        item={lithiumBattery}
+        sources={lithiumSources.filter((source) => source.id !== 'SRC-006')}
+        facilities={lithiumFacilities}
+      />,
+    )
+
+    expect(screen.getByRole('heading', { level: 2, name: 'Guidance unavailable' })).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { level: 3, name: 'What to do' })).not.toBeInTheDocument()
+  })
+
   it('labels source-backed alternatives as optional rather than required steps', () => {
     render(<DisposalResult item={furniture} sources={furnitureSources} facilities={[]} />)
 
