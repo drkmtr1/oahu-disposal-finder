@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { DisposalResult } from '../components/DisposalResult'
 import { DataError } from '../components/DataError'
 import { FallbackGuidance } from '../components/FallbackGuidance'
@@ -15,6 +15,9 @@ function App() {
   const [clarificationId, setClarificationId] = useState<string | null>(null)
   const [fallbackId, setFallbackId] = useState<FallbackId | null>(null)
   const [noMatchQuery, setNoMatchQuery] = useState<string | null>(null)
+  const resultHeadingRef = useRef<HTMLHeadingElement>(null)
+  const clarificationHeadingRef = useRef<HTMLHeadingElement>(null)
+  const fallbackHeadingRef = useRef<HTMLHeadingElement>(null)
   const selectedTopic = data.items.find((item) => item.id === selectedTopicId) ?? null
   const selectedTopicSources = selectedTopic
     ? data.sources.filter((source) => selectedTopic.source_ids.includes(source.id))
@@ -36,6 +39,20 @@ function App() {
     : []
   const unsupportedFallback = data.fallbacks.unsupported
   const unsupportedSources = data.sources.filter((source) => unsupportedFallback.source_ids.includes(source.id))
+
+  useEffect(() => {
+    if (selectedTopicId && !hasFacilityDataError) {
+      resultHeadingRef.current?.focus()
+      return
+    }
+
+    if (clarificationId) {
+      clarificationHeadingRef.current?.focus()
+      return
+    }
+
+    if (fallbackId || noMatchQuery !== null) fallbackHeadingRef.current?.focus()
+  }, [clarificationId, fallbackId, hasFacilityDataError, noMatchQuery, selectedTopicId])
 
   function selectTopic(itemId: string) {
     setSelectedTopicId(itemId)
@@ -132,13 +149,14 @@ function App() {
               item={selectedTopic}
               sources={selectedTopicSources}
               facilities={selectedTopicFacilities}
+              headingRef={resultHeadingRef}
             />
           )
         )}
 
         {clarificationGroup && (
-          <section className="clarification" aria-labelledby="clarification-title" aria-live="polite">
-            <h2 id="clarification-title">A quick question</h2>
+          <section className="clarification" aria-labelledby="clarification-title">
+            <h2 id="clarification-title" ref={clarificationHeadingRef} tabIndex={-1}>A quick question</h2>
             <p>{clarificationGroup.prompt}</p>
             <ul className="clarification-options">
               {clarificationGroup.options.map((option) => (
@@ -156,7 +174,11 @@ function App() {
         )}
 
         {selectedFallback && (
-          <FallbackGuidance fallback={selectedFallback} sources={fallbackSources} />
+          <FallbackGuidance
+            fallback={selectedFallback}
+            sources={fallbackSources}
+            headingRef={fallbackHeadingRef}
+          />
         )}
 
         {noMatchQuery !== null && (
@@ -164,6 +186,7 @@ function App() {
             fallback={unsupportedFallback}
             sources={unsupportedSources}
             query={noMatchQuery}
+            headingRef={fallbackHeadingRef}
           />
         )}
       </main>

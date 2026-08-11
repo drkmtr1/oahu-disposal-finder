@@ -1,3 +1,4 @@
+import type { Ref } from 'react'
 import type { DisposalData } from '../data/loadData'
 
 type Fallback = DisposalData['fallbacks'][keyof DisposalData['fallbacks']]
@@ -7,14 +8,15 @@ type FallbackGuidanceProps = {
   fallback: Fallback
   sources: Source[]
   query?: string
+  headingRef?: Ref<HTMLHeadingElement>
 }
 
-export function FallbackGuidance({ fallback, sources, query }: FallbackGuidanceProps) {
+export function FallbackGuidance({ fallback, sources, query, headingRef }: FallbackGuidanceProps) {
   const isNoMatch = query !== undefined
 
   return (
-    <section className={isNoMatch ? 'fallback no-match' : 'fallback'} aria-live="polite" aria-labelledby="fallback-title">
-      <h2 id="fallback-title">
+    <section className={isNoMatch ? 'fallback no-match' : 'fallback'} aria-labelledby="fallback-title">
+      <h2 id="fallback-title" ref={headingRef} tabIndex={-1}>
         {isNoMatch ? 'This item is not currently covered by V1' : 'Check the official source'}
       </h2>
       {isNoMatch && <p>“{query}” did not match a supported item or topic.</p>}

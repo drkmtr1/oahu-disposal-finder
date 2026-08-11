@@ -34,6 +34,7 @@ describe('topic browse', () => {
     await user.click(screen.getByRole('button', { name: 'Search' }))
 
     expect(screen.getByRole('heading', { level: 2, name: 'Propane tank / cylinder' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: 'Propane tank / cylinder' })).toHaveFocus()
     expect(screen.getByText('Do not dispose of propane tanks in regular trash.')).toBeInTheDocument()
   })
 
@@ -45,6 +46,7 @@ describe('topic browse', () => {
     await user.click(screen.getByRole('button', { name: 'Search' }))
 
     expect(screen.getByRole('heading', { level: 2, name: 'This item is not currently covered by V1' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: 'This item is not currently covered by V1' })).toHaveFocus()
     expect(screen.getByText(/does not mean the City has no disposal rule/)).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'How to Dispose of Trash' })).toHaveAttribute(
       'href',
@@ -62,11 +64,13 @@ describe('topic browse', () => {
     await user.click(screen.getByRole('button', { name: 'Search' }))
 
     expect(screen.getByText('Which type of battery do you have?')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: 'A quick question' })).toHaveFocus()
     const choice = screen.getByRole('button', { name: 'Alkaline household battery' })
     choice.focus()
     await user.keyboard('{Enter}')
 
     expect(screen.getByRole('heading', { level: 2, name: 'Alkaline battery' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: 'Alkaline battery' })).toHaveFocus()
   })
 
   it('takes a clarification fallback choice to its data-backed official source', async () => {
@@ -78,6 +82,7 @@ describe('topic browse', () => {
     await user.click(screen.getByRole('button', { name: 'Aerosol/spray paint or another paint product' }))
 
     expect(screen.getByRole('heading', { level: 2, name: 'Check the official source' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: 'Check the official source' })).toHaveFocus()
     expect(screen.getByRole('link', { name: 'Paints (HHW)' })).toBeInTheDocument()
     expect(screen.queryByRole('heading', { level: 3, name: 'What to do' })).not.toBeInTheDocument()
   })
