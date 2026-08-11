@@ -1,0 +1,1563 @@
+{
+  "metadata": {
+    "name": "Oʻahu Household-Item Disposal Finder V1 Data",
+    "schema_version": "1.0.0",
+    "dataset_version": "1.0.0-phase3",
+    "scope": "Residential household disposal guidance for 25 frozen canonical topics on Oʻahu.",
+    "authoritative_source_owner": "City and County of Honolulu Department of Environmental Services (ENV)",
+    "verified_on": "2026-08-09",
+    "verification_timezone": "Pacific/Honolulu",
+    "coverage": {
+      "canonical_topics": 25,
+      "facility_records": 12,
+      "clarification_groups": 5
+    },
+    "disclaimer": "Independent civic-tech pilot derived from public City guidance; not an official City service. Verify time-sensitive details with the authoritative source before disposal."
+  },
+  "source_precedence": [
+    "Use a current item-specific ENV page when it directly addresses the material.",
+    "Use current resident drop-off rules to refine preparation, quantity, and prohibited-item details.",
+    "Use current facility pages to determine location-specific acceptance and hours.",
+    "Use the general How to Dispose page as broader context/fallback.",
+    "When sources differ in specificity without an explicit contradiction, preserve all provenance and apply the more specific rule.",
+    "When sources materially conflict and cannot be reconciled, do not guess; mark the record unresolved and require ENV confirmation."
+  ],
+  "fallbacks": {
+    "unsupported": {
+      "message": "This item/type is not covered by the frozen V1 corpus. Do not guess; use the authoritative ENV disposal guidance.",
+      "source_ids": [
+        "SRC-001"
+      ]
+    },
+    "official_battery_source": {
+      "message": "The battery type cannot be resolved safely from the information provided. Check ENV's battery guidance or contact ENV.",
+      "source_ids": [
+        "SRC-006",
+        "SRC-016"
+      ]
+    },
+    "official_paint_source": {
+      "message": "This paint type is outside the two frozen V1 paint topics. Use ENV's paint guidance.",
+      "source_ids": [
+        "SRC-010"
+      ]
+    },
+    "official_how_to_dispose_source": {
+      "message": "This item is outside the frozen V1 topic set. Use ENV's How to Dispose guidance.",
+      "source_ids": [
+        "SRC-001"
+      ]
+    },
+    "official_ewaste_source": {
+      "message": "This electronic item is outside the frozen V1 electronic topics. Use ENV's E-Waste Recycling guidance.",
+      "source_ids": [
+        "SRC-007"
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "SRC-001",
+      "title": "How to Dispose of Trash",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/how-to-dispose-of-trash/",
+      "role": "General item-by-item disposal guidance and fallback resident reference.",
+      "verified_on": "2026-08-09"
+    },
+    {
+      "id": "SRC-002",
+      "title": "Waste Drop-Off Locations",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/waste-drop-off-locations/",
+      "role": "Facility addresses, hours, accepted-item lists, resident delivery rules, WGSL and composting facility.",
+      "verified_on": "2026-08-09"
+    },
+    {
+      "id": "SRC-003",
+      "title": "Waste Drop-Off Rules — Residents",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/waste-drop-off-rules-residents/",
+      "role": "Specific resident preparation, load, size, battery, tire, compressed-gas, concrete, metal, and prohibited-item rules.",
+      "verified_on": "2026-08-09"
+    },
+    {
+      "id": "SRC-004",
+      "title": "Household Hazardous Waste (HHW)",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/hhw-2/",
+      "role": "HHW classification, appointment process, safety guidance, and disposal-method distinctions.",
+      "verified_on": "2026-08-09",
+      "dynamic": true
+    },
+    {
+      "id": "SRC-005",
+      "title": "Other Household Hazardous Waste",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/other-hhw/",
+      "role": "Current appointment-only event rules, listed HHW materials, registration limits.",
+      "verified_on": "2026-08-09",
+      "dynamic": true
+    },
+    {
+      "id": "SRC-006",
+      "title": "Batteries (HHW)",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/batteries-hhw/",
+      "role": "Battery-type-specific disposal rules, including embedded batteries.",
+      "verified_on": "2026-08-09"
+    },
+    {
+      "id": "SRC-007",
+      "title": "E-Waste Recycling",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/e-waste-recycling/",
+      "role": "Household e-waste options, battery/electronics guidance, City-referenced external recyclers.",
+      "verified_on": "2026-08-09",
+      "dynamic": true
+    },
+    {
+      "id": "SRC-008",
+      "title": "E-Waste Recycling at City Disposal Sites",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/city-ewaste-dropbins/",
+      "role": "Acceptable and unacceptable materials for City e-waste bins at convenience centers and transfer stations.",
+      "verified_on": "2026-08-09"
+    },
+    {
+      "id": "SRC-009",
+      "title": "Medications / Sharps / Needles (HHW)",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/medications-sharps-needles-hhw/",
+      "role": "Medication drop-box/take-back guidance.",
+      "verified_on": "2026-08-09",
+      "dynamic": true
+    },
+    {
+      "id": "SRC-010",
+      "title": "Paints (HHW)",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/paints-hhw/",
+      "role": "Paint-type-specific disposal rules.",
+      "verified_on": "2026-08-09"
+    },
+    {
+      "id": "SRC-011",
+      "title": "Propane (HHW)",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/propane-hhw/",
+      "role": "Propane/butane/MAPP City drop-off rules and Keʻehi exclusion.",
+      "verified_on": "2026-08-09"
+    },
+    {
+      "id": "SRC-012",
+      "title": "Motor Oil / Filter (HHW)",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/motor-oil-filter-hhw/",
+      "role": "Motor oil absorption/trash rule and mixed oil/gas distinction.",
+      "verified_on": "2026-08-09"
+    },
+    {
+      "id": "SRC-013",
+      "title": "Oʻahu Christmas Tree Disposal",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/christmas-tree-disposal/",
+      "role": "Natural Christmas tree curbside preparation and whole-tree drop-off guidance.",
+      "verified_on": "2026-08-09",
+      "dynamic": true
+    },
+    {
+      "id": "SRC-014",
+      "title": "Holiday Opala Alerts",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/holiday-opala-alerts/",
+      "role": "Current natural-tree facility exclusions and bulky-appointment limitation.",
+      "verified_on": "2026-08-09",
+      "dynamic": true
+    },
+    {
+      "id": "SRC-015",
+      "title": "ENV Frequently Asked Questions",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/faq-accordion/",
+      "role": "Current bulky-item appointment guidance and household e-waste context.",
+      "verified_on": "2026-08-09"
+    },
+    {
+      "id": "SRC-016",
+      "title": "ENV Contact Information",
+      "organization": "City and County of Honolulu Department of Environmental Services (ENV)",
+      "url": "https://www.honolulu.gov/env/ref/contact-information/",
+      "role": "Official escalation contacts for collection, disposal, HHW, and recycling questions.",
+      "verified_on": "2026-08-09"
+    }
+  ],
+  "facilities": [
+    {
+      "id": "FAC-CC-WAIMANALO",
+      "name": "Waimānalo Convenience Center",
+      "kind": "city_convenience_center",
+      "resident_only": true,
+      "address": "41-241 Hihimanu Street, Waimānalo, HI",
+      "phone": "(808) 259-7182",
+      "hours": "Daily 7:00 a.m.–6:00 p.m.; closed Christmas and New Year's Day",
+      "source_ids": [
+        "SRC-002"
+      ]
+    },
+    {
+      "id": "FAC-CC-WAIANAE",
+      "name": "Waiʻanae Convenience Center",
+      "kind": "city_convenience_center",
+      "resident_only": true,
+      "address": "85-572 Waiʻanae Valley Road, Waiʻanae, HI",
+      "phone": "(808) 696-4203",
+      "hours": "Daily 7:00 a.m.–6:00 p.m.; closed Christmas and New Year's Day",
+      "source_ids": [
+        "SRC-002"
+      ]
+    },
+    {
+      "id": "FAC-CC-WAIPAHU",
+      "name": "Waipahu Convenience Center",
+      "kind": "city_convenience_center",
+      "resident_only": true,
+      "address": "94-071 Waipahu Depot Street, Waipahu, HI",
+      "phone": "(808) 676-8878",
+      "hours": "Daily 7:00 a.m.–6:00 p.m.; closed Christmas and New Year's Day",
+      "source_ids": [
+        "SRC-002"
+      ]
+    },
+    {
+      "id": "FAC-CC-EWA",
+      "name": "ʻEwa Beach Convenience Center",
+      "kind": "city_convenience_center",
+      "resident_only": true,
+      "address": "91-1000 Geiger Road, ʻEwa Beach, HI",
+      "phone": "(808) 226-2996",
+      "hours": "Daily 7:00 a.m.–6:00 p.m.; closed Christmas and New Year's Day",
+      "source_ids": [
+        "SRC-002"
+      ]
+    },
+    {
+      "id": "FAC-CC-KAPOLEI",
+      "name": "Kapolei Convenience Center",
+      "kind": "city_convenience_center",
+      "resident_only": true,
+      "address": "91-184 Kaomi Loop, Kapolei, HI",
+      "phone": "(808) 260-2801",
+      "hours": "Daily 7:00 a.m.–6:00 p.m.; closed Christmas and New Year's Day",
+      "source_ids": [
+        "SRC-002"
+      ]
+    },
+    {
+      "id": "FAC-CC-LAIE",
+      "name": "Lāʻie Convenience Center",
+      "kind": "city_convenience_center",
+      "resident_only": true,
+      "address": "56-020 Kamehameha Highway, Lāʻie, HI",
+      "phone": "(808) 293-8714",
+      "hours": "Daily 7:00 a.m.–6:00 p.m.; closed Christmas and New Year's Day",
+      "source_ids": [
+        "SRC-002"
+      ]
+    },
+    {
+      "id": "FAC-CC-WAHIAWA",
+      "name": "Wahiawā Convenience Center",
+      "kind": "city_convenience_center",
+      "resident_only": true,
+      "address": "71-129 Wilikina Drive, Wahiawā, HI",
+      "phone": "(808) 621-3648",
+      "hours": "Daily 7:00 a.m.–6:00 p.m.; closed Christmas and New Year's Day",
+      "restrictions": [
+        "No green waste accepted."
+      ],
+      "source_ids": [
+        "SRC-002"
+      ]
+    },
+    {
+      "id": "FAC-TS-KAPAA",
+      "name": "Kapaʻa Transfer Station",
+      "kind": "city_transfer_station",
+      "resident_only": false,
+      "address": "100 Kapaʻa Quarry Road, Kailua, HI",
+      "phone": "(808) 768-4248",
+      "hours": "Mon–Fri 10:00 a.m.–6:00 p.m.; Sat–Sun 7:00 a.m.–6:00 p.m.; closed Christmas and New Year's Day",
+      "source_ids": [
+        "SRC-002",
+        "SRC-003"
+      ]
+    },
+    {
+      "id": "FAC-TS-KAWAILOA",
+      "name": "Kawailoa Transfer Station",
+      "kind": "city_transfer_station",
+      "resident_only": false,
+      "address": "62-180 Kawailoa Road, Haleʻiwa, HI",
+      "phone": "(808) 637-5511",
+      "hours": "Daily 7:00 a.m.–6:00 p.m.; closed Christmas and New Year's Day",
+      "restrictions": [
+        "Green waste accepted Sundays 7:00 a.m.–1:00 p.m. and is not separated for composting."
+      ],
+      "source_ids": [
+        "SRC-002"
+      ]
+    },
+    {
+      "id": "FAC-TS-KEEHI",
+      "name": "Keʻehi Transfer Station",
+      "kind": "city_transfer_station",
+      "resident_only": false,
+      "address": "606 Middle Street, Honolulu, HI",
+      "phone": "(808) 768-4884",
+      "hours": "Mon–Fri 10:00 a.m.–6:00 p.m.; Sat 7:00 a.m.–6:00 p.m.; closed Sundays, Christmas, and New Year's Day",
+      "restrictions": [
+        "No large metal appliances.",
+        "No tires.",
+        "No compressed gas, helium, butane, MAPP, or fire extinguishers."
+      ],
+      "source_ids": [
+        "SRC-002"
+      ]
+    },
+    {
+      "id": "FAC-WGSL",
+      "name": "Waimānalo Gulch Sanitary Landfill (WGSL)",
+      "kind": "city_landfill_contracted_operator",
+      "resident_only": false,
+      "address": "92-460 Farrington Highway, Kapolei, HI",
+      "phone": "(808) 668-2985",
+      "hours": "Mon–Sat 7:00 a.m.–4:30 p.m.; closed Christmas and New Year's Day",
+      "restrictions": [
+        "Resident acceptable waste listed as dirt, rock, sand, gravel, concrete and dead animals only."
+      ],
+      "source_ids": [
+        "SRC-002",
+        "SRC-003"
+      ]
+    },
+    {
+      "id": "FAC-HER-WAHIAWA",
+      "name": "Hawaiian Earth Recycling — Wahiawā",
+      "kind": "city_contracted_composting_facility",
+      "resident_only": false,
+      "address": "65-1101 Wilikina Drive, Wahiawā, HI",
+      "phone": "(808) 682-5895",
+      "hours": "Mon–Sat 7:00 a.m.–4:30 p.m.; Sun 8:00 a.m.–12:00 p.m.; closed Christmas and New Year's Day",
+      "source_ids": [
+        "SRC-002",
+        "SRC-013",
+        "SRC-014"
+      ]
+    }
+  ],
+  "clarification_groups": [
+    {
+      "id": "CLAR-BATTERY-GENERAL",
+      "triggers": [
+        "battery",
+        "batteries"
+      ],
+      "prompt": "Which type of battery do you have?",
+      "options": [
+        {
+          "label": "Alkaline household battery",
+          "item_id": "IT-009"
+        },
+        {
+          "label": "Standalone lithium/rechargeable battery",
+          "item_id": "IT-008"
+        },
+        {
+          "label": "Battery built into / not removable from a device",
+          "item_id": "IT-007"
+        },
+        {
+          "label": "Car or motorcycle lead-acid battery",
+          "item_id": "IT-010"
+        },
+        {
+          "label": "Another battery type",
+          "fallback": "unsupported"
+        }
+      ]
+    },
+    {
+      "id": "CLAR-LAPTOP-BATTERY",
+      "triggers": [
+        "laptop battery",
+        "swollen laptop battery",
+        "swollen lithium battery",
+        "swollen lithium-ion battery"
+      ],
+      "prompt": "Is the battery removed/standalone, or is it still built into the device and not designed to be removed?",
+      "options": [
+        {
+          "label": "Removed or standalone battery",
+          "item_id": "IT-008"
+        },
+        {
+          "label": "Built into / not removable from the device",
+          "item_id": "IT-007"
+        },
+        {
+          "label": "I cannot tell",
+          "fallback": "official_battery_source"
+        }
+      ]
+    },
+    {
+      "id": "CLAR-PAINT",
+      "triggers": [
+        "paint",
+        "leftover paint"
+      ],
+      "prompt": "Which type of paint do you have?",
+      "options": [
+        {
+          "label": "Latex/water-based or oil paint",
+          "item_id": "IT-018"
+        },
+        {
+          "label": "Lead or aluminum paint",
+          "item_id": "IT-019"
+        },
+        {
+          "label": "Aerosol/spray paint or another paint product",
+          "fallback": "official_paint_source"
+        }
+      ]
+    },
+    {
+      "id": "CLAR-APPLIANCE",
+      "triggers": [
+        "appliance",
+        "old appliance"
+      ],
+      "prompt": "Is it a large household appliance or a small appliance?",
+      "options": [
+        {
+          "label": "Large appliance (for example refrigerator, washer, dryer, stove)",
+          "item_id": "IT-001"
+        },
+        {
+          "label": "Small appliance (for example toaster or microwave)",
+          "item_id": "IT-002"
+        },
+        {
+          "label": "Another appliance type",
+          "fallback": "official_how_to_dispose_source"
+        }
+      ]
+    },
+    {
+      "id": "CLAR-ELECTRONICS",
+      "triggers": [
+        "electronics",
+        "electronic device",
+        "e-waste",
+        "ewaste"
+      ],
+      "prompt": "What kind of electronic item is it?",
+      "options": [
+        {
+          "label": "Computer or laptop",
+          "item_id": "IT-004"
+        },
+        {
+          "label": "Television or monitor",
+          "item_id": "IT-005"
+        },
+        {
+          "label": "Cell phone",
+          "item_id": "IT-006"
+        },
+        {
+          "label": "Device with a non-removable/embedded battery",
+          "item_id": "IT-007"
+        },
+        {
+          "label": "Another electronic item",
+          "fallback": "official_ewaste_source"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "IT-001",
+      "name": "Large appliance",
+      "category": "appliances",
+      "aliases": [
+        "refrigerator",
+        "fridge",
+        "freezer",
+        "washer",
+        "washing machine",
+        "dryer",
+        "stove",
+        "range",
+        "dishwasher",
+        "water heater",
+        "air conditioner",
+        "large appliance"
+      ],
+      "primary_pathway": {
+        "type": "bulky_or_city_dropoff",
+        "next_action": "Schedule bulky-item collection or take the household appliance to an eligible City disposal site.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA"
+        ]
+      },
+      "preparation": [],
+      "restrictions": [
+        "City resident rules limit large appliances to 2 per month.",
+        "Household types only; no commercial equipment.",
+        "Keʻehi Transfer Station does not accept large metal appliances."
+      ],
+      "prohibitions": [],
+      "alternatives": [
+        {
+          "type": "dealer_or_reuse",
+          "label": "Dealer removal, donation, or qualifying refrigerator/freezer programs may be available.",
+          "source_ids": [
+            "SRC-001"
+          ]
+        }
+      ],
+      "source_ids": [
+        "SRC-001",
+        "SRC-002",
+        "SRC-003",
+        "SRC-015"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-002",
+      "name": "Small appliance",
+      "category": "appliances",
+      "aliases": [
+        "toaster",
+        "microwave",
+        "sewing machine",
+        "small appliance"
+      ],
+      "primary_pathway": {
+        "type": "regular_refuse",
+        "next_action": "Dispose of the small appliance with regular household refuse; self-haul household refuse may also go to City convenience centers or transfer stations.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA",
+          "FAC-TS-KEEHI"
+        ]
+      },
+      "preparation": [],
+      "restrictions": [
+        "If the appliance contains a non-removable/embedded battery, use the embedded-battery device guidance instead."
+      ],
+      "prohibitions": [],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-003"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": [
+        "Resident rules list microwaves, toasters and sewing machines as regular refuse examples."
+      ]
+    },
+    {
+      "id": "IT-003",
+      "name": "Bicycle",
+      "category": "metal_bulky",
+      "aliases": [
+        "bicycle",
+        "bike",
+        "old bike"
+      ],
+      "primary_pathway": {
+        "type": "bulky_or_city_dropoff",
+        "next_action": "Schedule bulky-item collection or take the bicycle to a City disposal site and follow the site's metal-sorting instructions.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA",
+          "FAC-TS-KEEHI"
+        ]
+      },
+      "preparation": [],
+      "restrictions": [],
+      "prohibitions": [],
+      "alternatives": [
+        {
+          "type": "reuse",
+          "label": "Repair/donation or City-referenced recycling drives may be preferable for usable bicycles.",
+          "source_ids": [
+            "SRC-001",
+            "SRC-003"
+          ]
+        }
+      ],
+      "source_ids": [
+        "SRC-001",
+        "SRC-003",
+        "SRC-015"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-004",
+      "name": "Computer / laptop",
+      "category": "electronics",
+      "aliases": [
+        "computer",
+        "desktop computer",
+        "desktop pc",
+        "pc tower",
+        "laptop",
+        "notebook computer"
+      ],
+      "primary_pathway": {
+        "type": "city_ewaste_recycling",
+        "next_action": "For recycling, take the computer or laptop to a City e-waste bin at any listed convenience center or transfer station.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA",
+          "FAC-TS-KEEHI"
+        ]
+      },
+      "preparation": [],
+      "restrictions": [
+        "If the disposal concern is a damaged/swollen battery that is removed or non-removable, use the battery clarification path rather than assuming the ordinary computer route."
+      ],
+      "prohibitions": [],
+      "alternatives": [
+        {
+          "type": "reuse_or_recycler",
+          "label": "ENV also lists donation, manufacturer/retailer take-back, and local e-waste recycler options.",
+          "source_ids": [
+            "SRC-007"
+          ]
+        }
+      ],
+      "source_ids": [
+        "SRC-007",
+        "SRC-008"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-005",
+      "name": "Television / monitor",
+      "category": "electronics",
+      "aliases": [
+        "television",
+        "tv",
+        "computer monitor",
+        "monitor",
+        "crt monitor",
+        "flat screen tv",
+        "flatscreen tv"
+      ],
+      "primary_pathway": {
+        "type": "city_ewaste_recycling",
+        "next_action": "For recycling, take the television or computer monitor to a City e-waste bin at any listed convenience center or transfer station.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA",
+          "FAC-TS-KEEHI"
+        ]
+      },
+      "preparation": [],
+      "restrictions": [],
+      "prohibitions": [],
+      "alternatives": [
+        {
+          "type": "reuse_or_recycler",
+          "label": "ENV also lists donation, manufacturer/retailer take-back, and local e-waste recycler options; fees may apply at some private recyclers.",
+          "source_ids": [
+            "SRC-007"
+          ]
+        }
+      ],
+      "source_ids": [
+        "SRC-007",
+        "SRC-008"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-006",
+      "name": "Cell phone",
+      "category": "electronics",
+      "aliases": [
+        "cell phone",
+        "cellphone",
+        "mobile phone",
+        "smartphone",
+        "iphone",
+        "android phone"
+      ],
+      "primary_pathway": {
+        "type": "provider_or_ewaste_recycler",
+        "next_action": "Use a service-provider, manufacturer, donation, or e-waste-recycler program referenced by ENV; confirm current acceptance with the provider.",
+        "facility_ids": []
+      },
+      "preparation": [],
+      "restrictions": [
+        "City e-waste drop-off bins explicitly list mobile telephones as unacceptable.",
+        "If the phone's non-removable battery is the disposal concern, use the embedded-battery device pathway."
+      ],
+      "prohibitions": [],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-007",
+        "SRC-008"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": [
+        "This topic intentionally does not route cell phones to City e-waste bins."
+      ]
+    },
+    {
+      "id": "IT-007",
+      "name": "Embedded-battery electronic device",
+      "category": "batteries",
+      "aliases": [
+        "embedded battery device",
+        "device with built in battery",
+        "device with built-in battery",
+        "non removable battery device",
+        "non-removable battery device"
+      ],
+      "primary_pathway": {
+        "type": "hhw_appointment",
+        "next_action": "Schedule the device for a City Household Hazardous Waste event, or use an ENV-listed e-waste recycler/free collection event that accepts embedded-battery devices.",
+        "facility_ids": []
+      },
+      "preparation": [
+        "Before contacting HHW, estimate the total device weight and identify the device/material for registration."
+      ],
+      "restrictions": [
+        "HHW drop-off is by appointment and only registered items are accepted under current event rules."
+      ],
+      "prohibitions": [],
+      "alternatives": [
+        {
+          "type": "external_ewaste_recycler",
+          "label": "ENV says an e-waste recycler or free collection event may accept the entire device with its non-removable battery.",
+          "source_ids": [
+            "SRC-007"
+          ]
+        }
+      ],
+      "source_ids": [
+        "SRC-004",
+        "SRC-005",
+        "SRC-006",
+        "SRC-007"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-008",
+      "name": "Standalone lithium / rechargeable battery",
+      "category": "batteries",
+      "aliases": [
+        "lithium battery",
+        "lithium ion battery",
+        "lithium-ion battery",
+        "li ion battery",
+        "li-ion battery",
+        "rechargeable battery",
+        "nimh battery",
+        "nicad battery",
+        "nickel metal hydride battery",
+        "nickel cadmium battery",
+        "standalone lithium battery"
+      ],
+      "primary_pathway": {
+        "type": "city_dropoff",
+        "next_action": "Tape the terminals, place the standalone battery in a clear plastic bag, and take it to any City convenience center or transfer station.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA",
+          "FAC-TS-KEEHI"
+        ]
+      },
+      "preparation": [
+        "Tape battery terminals.",
+        "Place the battery in a clear plastic bag."
+      ],
+      "restrictions": [
+        "This rule is for standalone batteries. If the battery is still built into/non-removable from a device, use the embedded-battery pathway."
+      ],
+      "prohibitions": [
+        "Do not dispose of standalone lithium/rechargeable batteries in regular trash."
+      ],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-003",
+        "SRC-006"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-009",
+      "name": "Alkaline battery",
+      "category": "batteries",
+      "aliases": [
+        "alkaline battery",
+        "aa battery",
+        "aaa battery",
+        "d battery",
+        "9v battery",
+        "9 volt battery",
+        "button battery",
+        "disc battery",
+        "dry cell battery"
+      ],
+      "primary_pathway": {
+        "type": "regular_refuse",
+        "next_action": "Dispose of regular household alkaline batteries with regular refuse.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA",
+          "FAC-TS-KEEHI"
+        ]
+      },
+      "preparation": [],
+      "restrictions": [
+        "Do not use this rule for lithium/rechargeable, embedded, vehicle, heavy-equipment, or electric-vehicle batteries."
+      ],
+      "prohibitions": [],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-003",
+        "SRC-006"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-010",
+      "name": "Vehicle lead-acid battery",
+      "category": "batteries",
+      "aliases": [
+        "car battery",
+        "motorcycle battery",
+        "vehicle battery",
+        "lead acid battery",
+        "lead-acid battery"
+      ],
+      "primary_pathway": {
+        "type": "retailer_or_city_dropoff",
+        "next_action": "When purchasing a replacement, give the old car or motorcycle battery to the retailer; otherwise, residents may take eligible lead-acid car/motorcycle batteries to City convenience centers or transfer stations.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA",
+          "FAC-TS-KEEHI"
+        ]
+      },
+      "preparation": [],
+      "restrictions": [
+        "City resident rule is for lead-acid car and motorcycle batteries only.",
+        "Heavy-equipment batteries and electric-vehicle batteries are not covered/accepted under this City drop-off rule."
+      ],
+      "prohibitions": [],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-003",
+        "SRC-006"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-011",
+      "name": "Fire extinguisher",
+      "category": "compressed_gas",
+      "aliases": [
+        "fire extinguisher",
+        "residential fire extinguisher"
+      ],
+      "primary_pathway": {
+        "type": "city_dropoff",
+        "next_action": "Take an eligible residential fire extinguisher to a City convenience center, Kapaʻa Transfer Station, or Kawailoa Transfer Station.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA"
+        ]
+      },
+      "preparation": [],
+      "restrictions": [
+        "City resident rules list residential types A and B only; commercial types C, D, and E are not accepted.",
+        "Keʻehi Transfer Station does not accept fire extinguishers/compressed gas."
+      ],
+      "prohibitions": [],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-002",
+        "SRC-003"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-012",
+      "name": "Furniture / mattress / carpet",
+      "category": "bulky",
+      "aliases": [
+        "furniture",
+        "mattress",
+        "couch",
+        "sofa",
+        "chair",
+        "table",
+        "rug",
+        "carpet",
+        "carpeting"
+      ],
+      "primary_pathway": {
+        "type": "bulky_or_city_dropoff",
+        "next_action": "Schedule a bulky-item collection appointment or take the household item to a City disposal site.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA",
+          "FAC-TS-KEEHI"
+        ]
+      },
+      "preparation": [
+        "Fasten rugs/carpeting when self-hauling, consistent with resident regular-refuse examples."
+      ],
+      "restrictions": [],
+      "prohibitions": [],
+      "alternatives": [
+        {
+          "type": "reuse",
+          "label": "Donate usable furniture or household items where accepted.",
+          "source_ids": [
+            "SRC-001"
+          ]
+        }
+      ],
+      "source_ids": [
+        "SRC-001",
+        "SRC-003",
+        "SRC-015"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-013",
+      "name": "Household hazardous chemical",
+      "category": "hazardous_material",
+      "aliases": [
+        "hazardous chemical",
+        "household hazardous chemical",
+        "toxic household chemical",
+        "flammable household chemical",
+        "corrosive household chemical"
+      ],
+      "primary_pathway": {
+        "type": "requires_material_identification",
+        "next_action": "Identify the exact chemical on ENV's Household Hazardous Waste guidance before disposing of it; materials routed to HHW must be registered for an appointment.",
+        "facility_ids": []
+      },
+      "preparation": [
+        "Keep the original label when possible.",
+        "Keep different HHW products separated; do not mix products.",
+        "For appointment registration, inventory the material type, container size, and quantity."
+      ],
+      "restrictions": [
+        "Different household chemicals have different City disposal methods; this generic topic must not guess a method from the word 'chemical' alone.",
+        "Large quantities require contacting the Refuse Division for instructions."
+      ],
+      "prohibitions": [],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-004",
+        "SRC-005"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-014",
+      "name": "Medication",
+      "category": "medications",
+      "aliases": [
+        "medication",
+        "medicine",
+        "old medicine",
+        "unused medication",
+        "prescription medication",
+        "expired medication"
+      ],
+      "primary_pathway": {
+        "type": "medication_takeback",
+        "next_action": "Use a medication drop-box/take-back program referenced by ENV and check the linked locator for current locations.",
+        "facility_ids": []
+      },
+      "preparation": [],
+      "restrictions": [
+        "Medication guidance is separate from sharps/needles and from prohibited medical waste at City disposal sites."
+      ],
+      "prohibitions": [],
+      "alternatives": [
+        {
+          "type": "state_or_federal_takeback",
+          "label": "ENV references Hawaiʻi overdose-prevention drop boxes and National Prescription Drug Take Back Day.",
+          "source_ids": [
+            "SRC-009"
+          ]
+        }
+      ],
+      "source_ids": [
+        "SRC-001",
+        "SRC-009"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-015",
+      "name": "Oxygen tank",
+      "category": "compressed_gas",
+      "aliases": [
+        "oxygen tank",
+        "oxygen cylinder",
+        "medical oxygen tank"
+      ],
+      "primary_pathway": {
+        "type": "external_recycler_contact",
+        "next_action": "Do not take an oxygen tank to a City convenience center or transfer station; contact an ENV-listed recycling company to confirm acceptance.",
+        "facility_ids": []
+      },
+      "preparation": [],
+      "restrictions": [],
+      "prohibitions": [
+        "Oxygen tanks are listed as prohibited items at City resident disposal sites."
+      ],
+      "alternatives": [
+        {
+          "type": "city_referenced_external",
+          "label": "ENV lists AirGas, Matheson, and Refrigerant Recycling as companies to contact; confirm current acceptance/fees directly.",
+          "source_ids": [
+            "SRC-001"
+          ]
+        }
+      ],
+      "source_ids": [
+        "SRC-001",
+        "SRC-003"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-016",
+      "name": "Fluorescent tube / bulb",
+      "category": "hazardous_material",
+      "aliases": [
+        "fluorescent tube",
+        "fluorescent bulb",
+        "fluorescent lamp",
+        "cfl",
+        "compact fluorescent bulb",
+        "compact fluorescent light"
+      ],
+      "primary_pathway": {
+        "type": "hhw_appointment",
+        "next_action": "Schedule an appointment for a City Household Hazardous Waste event, or confirm an ENV-referenced retailer take-back option.",
+        "facility_ids": []
+      },
+      "preparation": [],
+      "restrictions": [
+        "HHW drop-off is appointment-based and subject to current registration/event limits."
+      ],
+      "prohibitions": [],
+      "alternatives": [
+        {
+          "type": "retailer_takeback",
+          "label": "ENV suggests checking retailers such as Home Depot for take-back.",
+          "source_ids": [
+            "SRC-001"
+          ]
+        }
+      ],
+      "source_ids": [
+        "SRC-001",
+        "SRC-004",
+        "SRC-005"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-017",
+      "name": "Helium tank",
+      "category": "compressed_gas",
+      "aliases": [
+        "helium tank",
+        "helium cylinder"
+      ],
+      "primary_pathway": {
+        "type": "city_dropoff",
+        "next_action": "Take an eligible household helium tank to a City convenience center, Kapaʻa Transfer Station, or Kawailoa Transfer Station.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA"
+        ]
+      },
+      "preparation": [],
+      "restrictions": [
+        "City resident rules specify helium tanks of 14.9 cu. ft.",
+        "Keʻehi Transfer Station does not accept helium/compressed gas.",
+        "If the tank does not match the listed household size/type, contact ENV Disposal Branch instead of assuming acceptance."
+      ],
+      "prohibitions": [],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-002",
+        "SRC-003"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-018",
+      "name": "Latex / oil paint",
+      "category": "paint",
+      "aliases": [
+        "latex paint",
+        "water based paint",
+        "water-based paint",
+        "oil paint",
+        "oil based paint",
+        "oil-based paint"
+      ],
+      "primary_pathway": {
+        "type": "absorb_dry_regular_refuse",
+        "next_action": "Absorb the liquid paint with suitable absorbent material or air-dry it in the can; once contained/dry, place it in regular refuse.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA",
+          "FAC-TS-KEEHI"
+        ]
+      },
+      "preparation": [
+        "Absorb liquid in a plastic bag with material such as shredded newspaper, old rags, or sawdust and seal the bag; or air-dry paint in the can."
+      ],
+      "restrictions": [
+        "This topic covers latex/water-based and oil paint. Aerosol, lead, aluminum, paint thinner/stripper, and other hazardous paint products can require HHW handling."
+      ],
+      "prohibitions": [],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-003",
+        "SRC-004",
+        "SRC-010"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-019",
+      "name": "Lead / aluminum paint",
+      "category": "paint",
+      "aliases": [
+        "lead paint",
+        "aluminum paint"
+      ],
+      "primary_pathway": {
+        "type": "hhw_appointment",
+        "next_action": "Schedule the paint for a City Household Hazardous Waste event.",
+        "facility_ids": []
+      },
+      "preparation": [],
+      "restrictions": [
+        "HHW drop-off is by appointment and only registered items are accepted under current event rules."
+      ],
+      "prohibitions": [],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-004",
+        "SRC-010"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-020",
+      "name": "Propane tank / cylinder",
+      "category": "compressed_gas",
+      "aliases": [
+        "propane tank",
+        "propane cylinder",
+        "grill propane tank",
+        "propane bottle"
+      ],
+      "primary_pathway": {
+        "type": "city_dropoff",
+        "next_action": "Do not put the propane tank in trash. Take an eligible household propane tank/cylinder to a City convenience center, Kapaʻa Transfer Station, or Kawailoa Transfer Station.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA"
+        ]
+      },
+      "preparation": [],
+      "restrictions": [
+        "Keʻehi Transfer Station does not accept compressed gas.",
+        "City resident rules list 5-gallon and 20-gallon propane tanks and 16-oz propane cylinders.",
+        "The propane-specific ENV page says accepted tanks may be empty, full, or partially full.",
+        "If the container does not match the listed household sizes/types, contact ENV Disposal Branch rather than assuming acceptance."
+      ],
+      "prohibitions": [
+        "Do not dispose of propane tanks in regular trash."
+      ],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-002",
+        "SRC-003",
+        "SRC-011"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-021",
+      "name": "Tire",
+      "category": "tires",
+      "aliases": [
+        "tire",
+        "car tire",
+        "passenger tire",
+        "light truck tire",
+        "tire with rim",
+        "tire without rim"
+      ],
+      "primary_pathway": {
+        "type": "retailer_or_city_dropoff",
+        "next_action": "When buying a new tire, use the dealer take-back requirement; otherwise, take eligible household tires to a City convenience center, Kapaʻa Transfer Station, or Kawailoa Transfer Station.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA"
+        ]
+      },
+      "preparation": [],
+      "restrictions": [
+        "Limit 4 tires per month at City disposal sites.",
+        "Passenger or light-truck tires only; no heavy-truck or equipment tires.",
+        "Tires may be with or without rims.",
+        "Keʻehi Transfer Station does not accept tires."
+      ],
+      "prohibitions": [],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-002",
+        "SRC-003"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-022",
+      "name": "Motor oil",
+      "category": "oils",
+      "aliases": [
+        "motor oil",
+        "used motor oil",
+        "engine oil",
+        "oil filter"
+      ],
+      "primary_pathway": {
+        "type": "absorb_regular_refuse",
+        "next_action": "Absorb the motor oil in an oil-change box or sealed plastic bag with absorbent material, then place it in regular refuse.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA",
+          "FAC-TS-KEEHI"
+        ]
+      },
+      "preparation": [
+        "Use an oil-change box or absorb liquid in a plastic bag with shredded newspaper, old rags, sawdust, or similar absorbent material; seal before disposal."
+      ],
+      "restrictions": [
+        "Do not use this rule for mixed oil/gas; ENV routes mixed oil/gas to a Household Hazardous Waste appointment."
+      ],
+      "prohibitions": [],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-003",
+        "SRC-004",
+        "SRC-012"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-023",
+      "name": "Rock / dirt / concrete",
+      "category": "inert_material",
+      "aliases": [
+        "concrete",
+        "concrete pieces",
+        "broken concrete",
+        "rock",
+        "rocks",
+        "dirt",
+        "soil",
+        "sand",
+        "gravel"
+      ],
+      "primary_pathway": {
+        "type": "special_city_dropoff",
+        "next_action": "For household quantities, use Kapaʻa Transfer Station within its small-load limit or Waimānalo Gulch Sanitary Landfill (WGSL) within its resident load limit.",
+        "facility_ids": [
+          "FAC-TS-KAPAA",
+          "FAC-WGSL"
+        ]
+      },
+      "preparation": [],
+      "restrictions": [
+        "Kapaʻa Transfer Station: up to five 5-gallon buckets of dirt/rock/sand/concrete/tile/asphalt/other non-combustible waste per day.",
+        "WGSL: up to two standard pickup-truck loads per day under the resident rules.",
+        "Large quantities/commercial vehicles can be redirected; residents should follow current site and vehicle rules."
+      ],
+      "prohibitions": [],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-002",
+        "SRC-003"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": [
+        "The general 'How to Dispose' page points to WGSL; the more specific resident-rules page additionally allows small quantities at Kapaʻa. V1 preserves both sources and applies the more specific rule."
+      ]
+    },
+    {
+      "id": "IT-024",
+      "name": "Large metal item",
+      "category": "metal",
+      "aliases": [
+        "large metal item",
+        "metal shelving",
+        "metal shelf",
+        "metal pipe",
+        "metal fencing",
+        "ladder",
+        "large metal piece"
+      ],
+      "primary_pathway": {
+        "type": "bulky_or_city_dropoff",
+        "next_action": "Schedule bulky-item collection or take the prepared metal item to a City disposal site and place it in the designated metal area.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-CC-WAHIAWA",
+          "FAC-TS-KAPAA",
+          "FAC-TS-KAWAILOA",
+          "FAC-TS-KEEHI"
+        ]
+      },
+      "preparation": [
+        "If material can be disassembled/cut/broken down, keep it under 6 feet long and under 60 pounds.",
+        "Metal shelving: disassemble, bundle, and fasten.",
+        "Fencing/pipes/gutters: bundle and fasten.",
+        "Ladders: maximum 6-foot length.",
+        "Drain and properly dispose of fluids from lawn tools or small auto parts before metal disposal."
+      ],
+      "restrictions": [
+        "Large automobile parts such as engines, transmissions, hoods, and doors are prohibited at resident City disposal sites."
+      ],
+      "prohibitions": [],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-003"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    },
+    {
+      "id": "IT-025",
+      "name": "Natural Christmas tree",
+      "category": "green_waste",
+      "aliases": [
+        "christmas tree",
+        "natural christmas tree",
+        "real christmas tree",
+        "live christmas tree"
+      ],
+      "primary_pathway": {
+        "type": "green_waste_or_dropoff",
+        "next_action": "Remove decorations. Use the green-cart/manual-collection preparation that applies to your residence, or take the whole natural tree to an eligible listed drop-off location.",
+        "facility_ids": [
+          "FAC-CC-WAIMANALO",
+          "FAC-CC-WAIANAE",
+          "FAC-CC-WAIPAHU",
+          "FAC-CC-EWA",
+          "FAC-CC-KAPOLEI",
+          "FAC-CC-LAIE",
+          "FAC-TS-KAPAA",
+          "FAC-HER-WAHIAWA"
+        ]
+      },
+      "preparation": [
+        "Remove ornaments and tinsel.",
+        "Do not flock the tree for green-waste/composting disposal.",
+        "Automated green cart: cut into lengths up to 3 feet and trim branches so the lid closes.",
+        "Manual collection: cut into lengths up to 3 feet and bundle."
+      ],
+      "restrictions": [
+        "Whole natural-tree drop-off is listed at convenience centers except Wahiawā, Kapaʻa Transfer Station, and Hawaiian Earth Recycling.",
+        "Current holiday guidance says bulky appointments cannot be made for natural Christmas trees."
+      ],
+      "prohibitions": [],
+      "alternatives": [],
+      "source_ids": [
+        "SRC-001",
+        "SRC-003",
+        "SRC-013",
+        "SRC-014"
+      ],
+      "verified_on": "2026-08-09",
+      "notes": []
+    }
+  ]
+}

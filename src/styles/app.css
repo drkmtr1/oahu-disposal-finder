@@ -1,0 +1,48 @@
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #17202a;
+  background: #f7f8fa;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+html { line-height: 1.5; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input, select, textarea { font: inherit; }
+a { color: inherit; }
+
+.container { width: min(100% - 2rem, 72rem); margin-inline: auto; }
+.site-header { padding-block: 2.5rem 1.5rem; background: #ffffff; border-bottom: 1px solid #d9dee5; }
+.site-header h1 { margin: 0.25rem 0 0; font-size: clamp(1.75rem, 4vw, 3rem); line-height: 1.1; }
+.eyebrow { margin: 0; font-weight: 700; letter-spacing: 0.04em; }
+main { padding-block: 2rem; }
+.search-section, .browse-section, .selected-topic, .clarification, .fallback, .no-match, .data-error { background: #fff; border: 1px solid #d9dee5; border-radius: 0.75rem; padding: 1.5rem; max-width: 52rem; }
+.search-section, .selected-topic, .clarification, .fallback, .no-match, .data-error { margin-bottom: 1.5rem; }
+.search-section h2, .browse-section h2, .selected-topic h2, .clarification h2, .fallback h2, .no-match h2, .data-error h2 { margin-top: 0; }
+.search-controls { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
+.search-controls input { flex: 1 1 15rem; min-height: 2.75rem; border: 1px solid #1a4f7a; border-radius: 0.4rem; padding: 0.5rem 0.75rem; }
+.search-controls button { min-height: 2.75rem; border: 1px solid #153455; border-radius: 0.4rem; background: #153455; color: #fff; padding: 0.5rem 1rem; font-weight: 700; cursor: pointer; }
+.topic-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0.75rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.topic-list button { width: 100%; min-height: 2.75rem; border: 1px solid #1a4f7a; border-radius: 0.4rem; background: #fff; color: #153455; padding: 0.625rem 0.75rem; font-weight: 600; text-align: left; cursor: pointer; }
+.topic-list button:hover { background: #e8f2fb; }
+.topic-list button:focus-visible { outline: 0.2rem solid #c85b16; outline-offset: 0.15rem; }
+.clarification-options { display: grid; gap: 0.75rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.clarification-options button { width: 100%; min-height: 2.75rem; border: 1px solid #1a4f7a; border-radius: 0.4rem; background: #fff; color: #153455; padding: 0.625rem 0.75rem; font-weight: 600; text-align: left; cursor: pointer; }
+.clarification-options button:hover { background: #e8f2fb; }
+.clarification-options button:focus-visible { outline: 0.2rem solid #c85b16; outline-offset: 0.15rem; }
+.selected-topic section + section { margin-top: 1.25rem; }
+.selected-topic h3 { margin-bottom: 0.5rem; }
+.source-provenance { border-top: 1px solid #d9dee5; padding-top: 1.25rem; }
+.facility-card-list { display: grid; gap: 1rem; }
+.facility-card { border: 1px solid #bfd3e6; border-radius: 0.5rem; padding: 1rem; }
+.facility-card h4, .facility-card h5 { margin-top: 0; }
+.optional-alternatives { border-top: 1px solid #d9dee5; padding-top: 1.25rem; }
+.hhw-process { border-inline-start: 0.3rem solid #1a4f7a; padding-inline-start: 1rem; }
+.prohibitions { border-inline-start: 0.3rem solid #9d2517; padding-inline-start: 1rem; }
+.prohibitions h3 { color: #7a1c12; }
+.data-error { border-color: #9d2517; }
+.search-controls input:focus-visible, .search-controls button:focus-visible { outline: 0.2rem solid #c85b16; outline-offset: 0.15rem; }
+.site-footer { border-top: 1px solid #d9dee5; padding-block: 1.5rem; font-size: 0.95rem; }
+:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
