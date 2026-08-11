@@ -37,14 +37,21 @@ describe('topic browse', () => {
     expect(screen.getByText('Do not dispose of propane tanks in regular trash.')).toBeInTheDocument()
   })
 
-  it('shows no match rather than guessing for unsupported input', async () => {
+  it('shows a safe, source-backed no-match state for an unsupported input', async () => {
     const user = userEvent.setup()
     render(<App />)
 
-    await user.type(screen.getByLabelText('Enter a supported item or topic'), 'couch')
+    await user.type(screen.getByLabelText('Enter a supported item or topic'), 'mystery household item')
     await user.click(screen.getByRole('button', { name: 'Search' }))
 
-    expect(screen.getByRole('heading', { level: 2, name: 'Furniture / mattress / carpet' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: 'This item is not currently covered by V1' })).toBeInTheDocument()
+    expect(screen.getByText(/does not mean the City has no disposal rule/)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'How to Dispose of Trash' })).toHaveAttribute(
+      'href',
+      'https://www.honolulu.gov/env/ref/how-to-dispose-of-trash/',
+    )
+    expect(screen.getByRole('link', { name: 'Browse the 25 supported topics' })).toHaveAttribute('href', '#browse-title')
+    expect(screen.queryByRole('heading', { level: 3, name: 'What to do' })).not.toBeInTheDocument()
   })
 
   it('renders data-driven clarification choices and routes a keyboard selection', async () => {
@@ -72,5 +79,6 @@ describe('topic browse', () => {
 
     expect(screen.getByRole('heading', { level: 2, name: 'Check the official source' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Paints (HHW)' })).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { level: 3, name: 'What to do' })).not.toBeInTheDocument()
   })
 })
