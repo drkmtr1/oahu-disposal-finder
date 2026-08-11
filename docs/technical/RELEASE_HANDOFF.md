@@ -2,14 +2,23 @@
 
 ## Deployment
 
-The repository deploys with `.github/workflows/deploy-pages.yml`.
+The repository deploys with `.github/workflows/deploy-pages.yml`. GitHub Pages is enabled with GitHub Actions as the build source.
 
-1. Enable GitHub Pages for `drkmtr1/oahu-disposal-finder` with **GitHub Actions** as the build source.
-2. Merge the validated release branch sequence into `main`.
-3. The `Deploy GitHub Pages` workflow runs the complete quality suite, uploads `dist`, and deploys it to Pages.
-4. Confirm the workflow's `github-pages` environment URL, expected to be `https://drkmtr1.github.io/oahu-disposal-finder/`.
+1. Merge a validated release change into `main`.
+2. The `Deploy GitHub Pages` workflow runs the complete quality suite, uploads `dist`, and deploys it to Pages.
+3. Confirm the workflow's `github-pages` environment URL: `https://drkmtr1.github.io/oahu-disposal-finder/`.
 
 No runtime secrets are required.
+
+## Production smoke record
+
+**Verified:** 2026-08-10 HST
+
+- Pages deployment workflow run [31463189782](https://github.com/drkmtr1/oahu-disposal-finder/actions/runs/31463189782) completed successfully.
+- `https://drkmtr1.github.io/oahu-disposal-finder/` returned HTTP 200 over HTTPS.
+- The deployed page rendered 25 browse-topic buttons.
+- Production search returned the propane result and its no-trash prohibition.
+- Production no-match returned the safe V1-coverage message and the ENV How to Dispose link.
 
 ## Production smoke check
 
