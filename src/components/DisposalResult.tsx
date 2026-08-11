@@ -1,5 +1,5 @@
 import type { Ref } from 'react'
-import { hasRequiredResultData, type ResultItem } from '../domain/resultData'
+import { hasRequiredResultData, type ResultItem, type ResultSource } from '../domain/resultData'
 import { DataError } from './DataError'
 import { FacilityCards } from './FacilityCards'
 import { HhwProcess } from './HhwProcess'
@@ -8,13 +8,7 @@ import { SourceProvenance } from './SourceProvenance'
 
 type DisposalResultProps = {
   item: ResultItem
-  sources: {
-    id: string
-    title: string
-    organization: string
-    url: string
-    dynamic?: boolean
-  }[]
+  sources: (ResultSource & { dynamic?: boolean })[]
   facilities: {
     id: string
     name: string
@@ -37,7 +31,7 @@ function InstructionList({ instructions }: { instructions: string[] }) {
 }
 
 export function DisposalResult({ item, sources, facilities, headingRef }: DisposalResultProps) {
-  if (!hasRequiredResultData(item)) {
+  if (!hasRequiredResultData(item, sources)) {
     return <DataError />
   }
 
