@@ -7,6 +7,8 @@ describe('topic browse', () => {
     render(<App />)
 
     expect(screen.getByRole('heading', { level: 1, name: /Oʻahu Household-Item Disposal Finder/i })).toBeInTheDocument()
+    expect(screen.getByRole('navigation', { name: 'Site navigation' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Language access resources' })).toHaveAttribute('href', 'https://health.hawaii.gov/ola/')
     expect(screen.getByRole('heading', { level: 2, name: 'Browse supported topics' })).toBeInTheDocument()
     expect(within(screen.getByRole('list')).getAllByRole('button')).toHaveLength(25)
     expect(screen.getByRole('button', { name: 'Propane tank / cylinder' })).toBeInTheDocument()
