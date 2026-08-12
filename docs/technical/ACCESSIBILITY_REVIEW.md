@@ -22,6 +22,12 @@ Automated checks cannot substitute for a human visual or assistive-technology re
 
 The operator reviewed the live app and confirmed that the core flow works as expected. This records the required human visual/core-flow confirmation. No screen-reader tool, browser, or assistive-technology findings were supplied, so that separate sign-off remains pending.
 
+### Screen-reader review record
+
+**Verified:** 2026-08-11 HST by the project operator
+
+The operator confirmed the human screen-reader review is good. No release-blocking finding was reported. Specific browser, screen-reader, and test-note details were not supplied, so this record does not infer them.
+
 ## Current conclusion
 
-The automated, keyboard, reflow, and human visual portions of the WCAG 2.2 AA-targeted review pass. Human screen-reader confirmation remains a release sign-off activity; it is not represented as automated conformance.
+The automated, keyboard, reflow, human visual, and human screen-reader portions of the WCAG 2.2 AA-targeted review pass. This evidence supports the project's WCAG 2.2 AA target; it is not a claim of formal third-party certification.

@@ -37,9 +37,15 @@ After a successful Pages deployment, verify the public HTTPS URL:
 
 - `npm run foundation:check` validates data, lint, TypeScript, unit tests, build, Chromium/WebKit end-to-end tests, and axe accessibility scans.
 - The five V1 acceptance scenarios are covered by `tests/e2e/acceptance-scenarios.spec.ts`.
-- Accessibility evidence, completed human visual review, and the remaining screen-reader sign-off boundary are recorded in `docs/technical/ACCESSIBILITY_REVIEW.md`.
+- Accessibility evidence plus completed human visual and screen-reader reviews are recorded in `docs/technical/ACCESSIBILITY_REVIEW.md`.
 - Source provenance, manual verification semantics, and known limitations are documented in `docs/data/DATA_SOURCE_REGISTER.md` and `docs/data/DATA_LIMITATIONS.md`.
 
 ## V1 boundary
 
 This is a static Oʻahu household/residential disposal finder for 25 frozen topics. It intentionally excludes accounts, backend services, payments, analytics, fuzzy routing, image recognition, live facility status, GPS/nearest-location functions, commercial disposal guidance, and automated source monitoring.
+
+## Version 1.0 completion
+
+All Must-Have stories, automated checks, public deployment, production smoke validation, visual review, and screen-reader review are complete as of 2026-08-11 HST.
+
+> Oʻahu Household-Item Disposal Finder Version 1.0 complete.
