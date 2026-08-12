@@ -37,7 +37,7 @@ After a successful Pages deployment, verify the public HTTPS URL:
 
 - `npm run foundation:check` validates data, lint, TypeScript, unit tests, build, Chromium/WebKit end-to-end tests, and axe accessibility scans.
 - The five V1 acceptance scenarios are covered by `tests/e2e/acceptance-scenarios.spec.ts`.
-- Accessibility evidence and the remaining human visual/screen-reader sign-off boundary are recorded in `docs/technical/ACCESSIBILITY_REVIEW.md`.
+- Accessibility evidence, completed human visual review, and the remaining screen-reader sign-off boundary are recorded in `docs/technical/ACCESSIBILITY_REVIEW.md`.
 - Source provenance, manual verification semantics, and known limitations are documented in `docs/data/DATA_SOURCE_REGISTER.md` and `docs/data/DATA_LIMITATIONS.md`.
 
 ## V1 boundary

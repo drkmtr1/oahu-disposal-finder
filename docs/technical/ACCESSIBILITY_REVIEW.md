@@ -16,6 +16,12 @@
 
 Automated checks cannot substitute for a human visual or assistive-technology review. Before declaring V1 released, the operator must complete the checklist in `docs/technical/ACCESSIBILITY.md` section 21 at 200% browser zoom and with a screen reader of their choice. Record the browser, assistive technology, date, and any findings in the release handoff.
 
+### Visual review record
+
+**Verified:** 2026-08-11 HST by the project operator
+
+The operator reviewed the live app and confirmed that the core flow works as expected. This records the required human visual/core-flow confirmation. No screen-reader tool, browser, or assistive-technology findings were supplied, so that separate sign-off remains pending.
+
 ## Current conclusion
 
-The automated, keyboard, and reflow portions of the WCAG 2.2 AA-targeted review pass. Human visual and screen-reader confirmation remains a release sign-off activity; it is not represented as automated conformance.
+The automated, keyboard, reflow, and human visual portions of the WCAG 2.2 AA-targeted review pass. Human screen-reader confirmation remains a release sign-off activity; it is not represented as automated conformance.
