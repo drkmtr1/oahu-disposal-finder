@@ -10,7 +10,8 @@ Independent Hawaiʻi civic-tech pilot that helps Oʻahu residents determine the 
 - Phase 4 — Technical Design: complete
 - Phase 5 — Development Foundation: complete
 - Product-story implementation: complete
-- Production deployment: live on GitHub Pages; human visual/screen-reader release sign-off remains pending
+- Production deployment: live on GitHub Pages
+- Version 1.0: complete
 
 ## V1 boundary
 
